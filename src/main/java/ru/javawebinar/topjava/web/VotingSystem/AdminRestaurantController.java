@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.javawebinar.topjava.AuthorizedUser;
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MenuItem;
 import ru.javawebinar.topjava.model.Restaurant;
 import ru.javawebinar.topjava.service.MenuItemService;
@@ -36,7 +37,7 @@ public class AdminRestaurantController {
     @Autowired
     private MenuItemService menuItemService;
 
-    static final String REST_URL = "/rest/admin/";
+    static final String REST_URL = "/rest/admin";
 
     @GetMapping(value = "restaurants", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Restaurant> getAll() {
@@ -85,7 +86,6 @@ public class AdminRestaurantController {
         log.info("restaurants delete {} for User {}", id, AuthorizedUser.id());
         restaurantService.delete(id);
     }
-
 
 
 }
