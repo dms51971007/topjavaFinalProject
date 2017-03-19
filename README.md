@@ -54,6 +54,29 @@ curl --user admin@gmail.com:admin -s -v -X DELETE http://localhost:8080/rest/adm
 _2. Меню ресторана_
 
 получить меню ресторана на дату, если дата не указана то на текущую дату
+curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/menus/300010?date=2017-03-10
+curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/menus/300010
 
+получить элемент меню по ID
+
+curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/menu/200010
+
+удалить элемент меню по ID
+
+curl --user admin@gmail.com:admin -s -v -X DELETE http://localhost:8080/rest/admin/menu/200010
+
+добавить элемент меню по ID ресторана, если указывать поля data то подставится текущая
+
+curl -H "Content-Type: application/json" -X PUT -d "{\"name\": \"pizzza\",\"price\": 5.11,\"data\": \"2017-03-10\",\"restaurantId\": 300010}" http://localhost:8080/rest/admin/menu --user admin@gmail.com:admin
+
+изменить элемент меню по ID ресторана, если указывать поля data то подставится текущая
+
+curl -H "Content-Type: application/json" -X POST -d "{\"name\": \"pizzza\",\"price\": 555.11,\"data\": \"2017-03-10\",\"restaurantId\": 300010}" http://localhost:8080/rest/admin/menu --user admin@gmail.com:admin
 
 _3. Голосование_
+
+проголосовать/изменить голос пользователя
+
+
+
+

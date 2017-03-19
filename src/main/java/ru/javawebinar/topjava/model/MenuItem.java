@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.model;
 
 import org.hibernate.annotations.*;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -33,10 +34,10 @@ public class MenuItem extends NamedEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;
 
-    @JoinColumn
+    @Column(name = "price")
     private Double price;
 
-    @JoinColumn
+    @Column(name = "data")
     private LocalDate data;
 
 

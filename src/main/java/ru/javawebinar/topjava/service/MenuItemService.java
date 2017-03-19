@@ -46,13 +46,13 @@ public class MenuItemService {
     }
 
 
-    @CacheEvict(value = "restaurant", allEntries = true)
+    @CacheEvict(value = "menu", allEntries = true)
     public MenuItem save(MenuItemTo menuItemTo) {
         if (menuItemTo.getData() == null) menuItemTo.setData(LocalDate.now());
         return menuItemRepository.save(toMenuItem(menuItemTo));
     }
 
-    @CacheEvict(value = "restaurant", allEntries = true)
+    @CacheEvict(value = "menu", allEntries = true)
     public void delete(int id) throws NotFoundException {
         checkNotFoundWithId(menuItemRepository.delete(id), id);
     }
