@@ -30,21 +30,30 @@ Hibernate/SpringMVC/SpringSecurity
 **Описание API**
 
 _1. Рестораны_
+
 Получить список ресторанов:
+
 curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/restaurants
+
 Получить ресторан по ID:
+
 curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/restaurant/300010
+
 Создать ресторан
+
 curl -H "Content-Type: application/json" -X POST -d "{\"name\":\"Test Value\"}" http://localhost:8080/rest/admin/restaurant --user admin@gmail.com:admin
+
 Изменить ресторан
+
 curl -H "Content-Type: application/json" -X PUT -d "{\"name\":\"Test Value1\", \"id\":\"300010\"}" http://localhost:8080/rest/admin/restaurant --user admin@gmail.com:admin
 
 Удалить ресторан
+
 curl --user admin@gmail.com:admin -s -v -X DELETE http://localhost:8080/rest/admin/restaurant/300011
 
-
-
-
 _2. Меню ресторана_
+
+получить меню ресторана на дату, если дата не указана то на текущую дату
+
 
 _3. Голосование_
