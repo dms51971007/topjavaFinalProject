@@ -1,11 +1,8 @@
 package ru.javawebinar.topjava.web.VotingSystem;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-import ru.javawebinar.topjava.model.Restaurant;
-import ru.javawebinar.topjava.service.MenuItemService;
 import ru.javawebinar.topjava.to.MenuItemTo;
 import ru.javawebinar.topjava.web.AbstractControllerTest;
 import ru.javawebinar.topjava.web.json.JsonUtil;
@@ -13,7 +10,6 @@ import ru.javawebinar.topjava.web.json.JsonUtil;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -21,8 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static ru.javawebinar.topjava.Profiles.JPA;
 import static ru.javawebinar.topjava.TestUtil.userHttpBasic;
-import static ru.javawebinar.topjava.UserTestData.ADMIN;
-import static ru.javawebinar.topjava.UserTestData.MATCHER;
 import static ru.javawebinar.topjava.lunchTestData.*;
 
 /**
