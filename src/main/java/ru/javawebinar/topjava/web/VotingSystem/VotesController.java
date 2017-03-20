@@ -44,6 +44,7 @@ public class VotesController {
     @PostMapping(value = "{restaurant_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<VoteTo> create(@PathVariable("restaurant_id") int restaurantId) {
 
+        log.info("votes for <>  User {}", restaurantId, AuthorizedUser.id());
         VoteTo created = voteService.save(new VoteTo(null, LocalDate.now(), restaurantId), AuthorizedUser.id());
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()

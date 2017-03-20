@@ -25,11 +25,8 @@ import static ru.javawebinar.topjava.util.UserUtil.DEFAULT_CALORIES_PER_DAY;
         @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.name, u.email"),
 })
 @Entity
-@NamedEntityGraph(name = User.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
 public class User extends NamedEntity {
-
-    public static final String GRAPH_WITH_MEALS = "User.withMeals";
 
     public static final String DELETE = "User.delete";
     public static final String ALL_SORTED = "User.getAllSorted";
@@ -60,31 +57,21 @@ public class User extends NamedEntity {
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @Column(name = "calories_per_day", columnDefinition = "int default 2000")
-    @Range(min = 10, max = 10000)
-    private int caloriesPerDay = DEFAULT_CALORIES_PER_DAY;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OrderBy("dateTime DESC")
-//    @JsonIgnore
-    protected List<Meal> meals;
-
     public User() {
     }
 
     public User(User u) {
-        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.getCaloriesPerDay(), u.isEnabled(), u.getRoles());
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
     }
 
     public User(Integer id, String name, String email, String password, Role role, Role... roles) {
-        this(id, name, email, password, DEFAULT_CALORIES_PER_DAY, true, EnumSet.of(role, roles));
+        this(id, name, email, password, true, EnumSet.of(role, roles));
     }
 
-    public User(Integer id, String name, String email, String password, int caloriesPerDay, boolean enabled, Set<Role> roles) {
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
         super(id, name);
         this.email = email;
         this.password = password;
-        this.caloriesPerDay = caloriesPerDay;
         this.enabled = enabled;
         setRoles(roles);
     }
@@ -113,13 +100,6 @@ public class User extends NamedEntity {
         this.enabled = enabled;
     }
 
-    public int getCaloriesPerDay() {
-        return caloriesPerDay;
-    }
-
-    public void setCaloriesPerDay(int caloriesPerDay) {
-        this.caloriesPerDay = caloriesPerDay;
-    }
 
     public boolean isEnabled() {
         return enabled;
@@ -133,9 +113,6 @@ public class User extends NamedEntity {
         return password;
     }
 
-    public List<Meal> getMeals() {
-        return meals;
-    }
 
     public void setRoles(Collection<Role> roles) {
         this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
@@ -149,7 +126,6 @@ public class User extends NamedEntity {
                 ", name=" + name +
                 ", enabled=" + enabled +
                 ", roles=" + roles +
-                ", caloriesPerDay=" + caloriesPerDay +
                 ')';
     }
 }

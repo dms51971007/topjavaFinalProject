@@ -15,14 +15,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.javawebinar.topjava.Profiles.JPA;
 import static ru.javawebinar.topjava.TestUtil.userHttpBasic;
 import static ru.javawebinar.topjava.lunchTestData.*;
 
 /**
  * Created by r2 on 16.03.2017.
  */
-@ActiveProfiles(JPA)
 public class AdminRestaurantControllerTest extends AbstractControllerTest {
 
 

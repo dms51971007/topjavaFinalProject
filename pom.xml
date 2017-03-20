@@ -8,8 +8,8 @@
 
     <version>1.0-SNAPSHOT</version>
 
-    <name>Calories Management</name>
-    <url>http://topjava.herokuapp.com/</url>
+    <name>Topjava Final project</name>
+    <url>https://github.com/dms51971007/topjavaFinalProject</url>
 
     <properties>
         <java.version>1.8</java.version>
@@ -33,7 +33,7 @@
         <hamcrest.version>1.3</hamcrest.version>
 
         <!-- Hibernate -->
-        <hibernate.version>5.2.7.Final </hibernate.version>
+        <hibernate.version>5.2.7.Final</hibernate.version>
         <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
 
         <!--Tools-->
@@ -70,68 +70,29 @@
             </plugin>
 
             <!--  http://stackoverflow.com/questions/4305935/is-it-possible-to-supply-tomcat6s-context-xml-file-via-the-maven-cargo-plugin#4417945 -->
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.5.0</version>
-                <configuration>
-                    <container>
-                        <containerId>tomcat8x</containerId>
-                        <systemProperties>
-                            <file.encoding>UTF-8</file.encoding>
-                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>
-                        </systemProperties>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.postgresql</groupId>
-                                <artifactId>postgresql</artifactId>
-                            </dependency>
-                        </dependencies>
-                    </container>
-                    <configuration>
-                        <configfiles>
-                            <configfile>
-                                <file>src/main/resources/tomcat/context.xml</file>
-                                <todir>conf/Catalina/localhost/</todir>
-                                <tofile>context.xml.default</tofile>
-                            </configfile>
-                        </configfiles>
-                    </configuration>
-                    <deployables>
-                        <deployable>
-                            <groupId>ru.javawebinar</groupId>
-                            <artifactId>topjava</artifactId>
-                            <type>war</type>
-                            <properties>
-                                <context>${project.build.finalName}</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>
-            </plugin>
 
-<!--
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <contextFile>src/main/resources/tomcat/context.xml</contextFile>
-                    <systemProperties>
-                        <file.encoding>UTF-8</file.encoding>
-                        <spring.profiles.active>tomcat,datajpa</spring.profiles.active>
-                    </systemProperties>
-                    <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.postgresql</groupId>
-                        <artifactId>postgresql</artifactId>
-                        <version>${postgresql.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
--->
+            <!--
+                        <plugin>
+                            <groupId>org.apache.tomcat.maven</groupId>
+                            <artifactId>tomcat7-maven-plugin</artifactId>
+                            <version>2.2</version>
+                            <configuration>
+                                <contextFile>src/main/resources/tomcat/context.xml</contextFile>
+                                <systemProperties>
+                                    <file.encoding>UTF-8</file.encoding>
+                                    <spring.profiles.active>tomcat,datajpa</spring.profiles.active>
+                                </systemProperties>
+                                <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>org.postgresql</groupId>
+                                    <artifactId>postgresql</artifactId>
+                                    <version>${postgresql.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+            -->
         </plugins>
     </build>
 
@@ -350,39 +311,13 @@
             <artifactId>spring-security-test</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.4</version>
+        </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>hsqldb</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.hsqldb</groupId>
-                    <artifactId>hsqldb</artifactId>
-                    <version>2.3.4</version>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>postgres</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <version>${postgresql.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-jdbc</artifactId>
-                    <version>${tomcat.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-    </profiles>
 
     <dependencyManagement>
         <dependencies>

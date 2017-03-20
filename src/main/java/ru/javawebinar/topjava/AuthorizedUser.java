@@ -41,9 +41,6 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
         return get().userTo.getId();
     }
 
-    public static int getCaloriesPerDay() {
-        return get().userTo.getCaloriesPerDay();
-    }
 
     public UserTo getUserTo() {
         return userTo;

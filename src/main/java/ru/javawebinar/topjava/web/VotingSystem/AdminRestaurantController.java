@@ -8,19 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.javawebinar.topjava.AuthorizedUser;
-import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.model.MenuItem;
 import ru.javawebinar.topjava.model.Restaurant;
 import ru.javawebinar.topjava.service.MenuItemService;
 import ru.javawebinar.topjava.service.RestaurantService;
-import ru.javawebinar.topjava.to.MenuItemTo;
 import ru.javawebinar.topjava.to.RestaurantTo;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 
 /**
  * Created by r2 on 09.03.2017.
