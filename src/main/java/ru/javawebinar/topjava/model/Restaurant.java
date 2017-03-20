@@ -39,8 +39,8 @@ public class Restaurant extends NamedEntity {
         setName(name);
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    @JsonIgnore
     protected List<MenuItem> menu;
 
     public Restaurant() {

@@ -31,7 +31,7 @@ public class VoteService {
     private JpaRestaurantRepository restaurantRepository;
 
     @Transactional
-    public Vote save(VoteTo voteTo, int userId) {
+    public VoteTo save(VoteTo voteTo, int userId) {
         Assert.notNull(voteTo, "Vote must not be null");
 
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.get(voteTo.getRestaurantId()), voteTo.getRestaurantId());
@@ -44,7 +44,8 @@ public class VoteService {
         vote.setData(voteTo.getData());
         vote.setRestaurant(restaurant);
 
-        return voteRepository.save(vote, userId);
+        Vote saved = voteRepository.save(vote, userId);
+        return new VoteTo(saved.getId(), saved.getData(), saved.getRestaurant().getId());
     }
 
     public Vote get(int id, Integer userId) throws NotFoundException {

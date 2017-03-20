@@ -25,7 +25,7 @@ public class Vote extends BaseEntity {
     public static final String GET_RESULT = "Vote.getResult";
     public static final String DELETE = "Vote.Delete";
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;

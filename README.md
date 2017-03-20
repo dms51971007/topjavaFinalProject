@@ -77,8 +77,20 @@ curl -H "Content-Type: application/json" -X POST -d "{\"name\": \"pizzza\",\"pri
 
 _3. Голосование_
 
-проголосовать/изменить голос пользователя
+проголосовать/изменить голос пользователя до 11:00, после 11:00 возможно только голосование
 
+curl --user user@yandex.ru:password -s -v -X POST http://localhost:8080/rest/votes/300011
 
+получить результаты голосования на дату, если дата не указана то за текущую
+
+curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/votes/results/?date="2017-03-17"
+
+получить список ресторанов
+
+curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/restaurants
+
+получить меню ресторана если дата не указана то на текущую дату
+
+curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/menus/300010/?date="2017-03-17"
 
 

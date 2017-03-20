@@ -42,9 +42,9 @@ public class VotesController {
     static final String REST_URL = "/rest/votes/";
 
     @PostMapping(value = "{restaurant_id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Vote> create(@PathVariable("restaurant_id") int restaurantId) {
+    public ResponseEntity<VoteTo> create(@PathVariable("restaurant_id") int restaurantId) {
 
-        Vote created = voteService.save(new VoteTo(LocalDate.now(), restaurantId), AuthorizedUser.id());
+        VoteTo created = voteService.save(new VoteTo(null, LocalDate.now(), restaurantId), AuthorizedUser.id());
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
