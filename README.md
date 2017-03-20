@@ -24,7 +24,9 @@ As a result, provide a link to github repository. It should contain the code, RE
 
 Maven/Spring/Security/JPA(Hibernate)/Rest(Jackson)
 база данных HSQLDB
+
 для удобства тестирования создан файл PopulateDB.sql заполнения базы начальными данными
+
 интерфейс для управления пользователями не предусмотрен
 
 **Описание API**
