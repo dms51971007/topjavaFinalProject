@@ -31,6 +31,7 @@ Maven/Spring/Security/JPA(Hibernate)/Rest(Jackson)
 
 
 пункты 1,2 доступны пользователям с ролью ROLE_ADMIN, пункты 3 только пользователям ROLE_USER
+
 _1. Рестораны_
 
 Получить список ресторанов:
