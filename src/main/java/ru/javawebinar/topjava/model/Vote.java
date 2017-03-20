@@ -10,17 +10,17 @@ import java.time.LocalDate;
  * Created by r2 on 10.03.2017.
  */
 @Entity
-@Table(name = "votes")
+@Table(name = "votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"data","user_id"}, name = "users_unique_data_user_idx")})
 @NamedQueries({
         @NamedQuery(name = Vote.DELETE, query = "DELETE FROM Vote v WHERE v.id=:id"),
-        @NamedQuery(name = Vote.GET_USER_DATA, query = "SELECT v FROM Vote v where v.user.id=:user_id and v.data=:data"),
+        @NamedQuery(name = Vote.GET_USER_DATE, query = "SELECT v FROM Vote v where v.user.id=:user_id and v.data=:data"),
         @NamedQuery(name = Vote.GET_RESULT, query = "SELECT new ru.javawebinar.topjava.to.VoteResultTo(count(v), v.restaurant) FROM Vote v where v.data=:data GROUP BY v.restaurant")
 
 })
 
 public class Vote extends BaseEntity {
 
-    public static final String GET_USER_DATA = "Vote.getByReastaurantByData";
+    public static final String GET_USER_DATE = "Vote.getByReastaurantByData";
     public static final String ALL_SORTED = "Vote.getAllSorted";
     public static final String GET_RESULT = "Vote.getResult";
     public static final String DELETE = "Vote.Delete";

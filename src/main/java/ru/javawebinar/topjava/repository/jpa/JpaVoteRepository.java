@@ -61,7 +61,7 @@ public class JpaVoteRepository {
 
     public Vote getByDateByUser(int userId, LocalDate data) {
         try {
-            return em.createNamedQuery(Vote.GET_USER_DATA, Vote.class).setParameter("user_id", userId).setParameter("data", data).getSingleResult();
+            return em.createNamedQuery(Vote.GET_USER_DATE, Vote.class).setParameter("user_id", userId).setParameter("data", data).getSingleResult();
         } catch (NoResultException exception) {
             return null;
         }
