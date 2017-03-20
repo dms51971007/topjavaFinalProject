@@ -22,9 +22,9 @@ As a result, provide a link to github repository. It should contain the code, RE
 
 при выполнении использованы следующие технологии:
 
-Hibernate/SpringMVC/SpringSecurity
+Maven/Spring/Security/JPA(Hibernate)/Rest(Jackson)
 база данных HSQLDB
-для удобства тестирования создан файл PopulateDB.sql для заполнения базы тестовыми данными
+для удобства тестирования создан файл PopulateDB.sql заполнения базы начальными данными
 интерфейс для управления пользователями не предусмотрен
 
 **Описание API**
@@ -54,7 +54,9 @@ curl --user admin@gmail.com:admin -s -v -X DELETE http://localhost:8080/rest/adm
 _2. Меню ресторана_
 
 получить меню ресторана на дату, если дата не указана то на текущую дату
+
 curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/menus/300010?date=2017-03-10
+
 curl --user admin@gmail.com:admin -s -v -X GET http://localhost:8080/rest/admin/menus/300010
 
 получить элемент меню по ID
